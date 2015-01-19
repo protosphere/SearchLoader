@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
 		appIndexerJobOptions = [NSMutableDictionary dictionaryWithContentsOfFile:appIndexerPlist];
 
 		// Give up
-		if (appIndexerPlist == nil) 
+		if (appIndexerJobOptions == nil) 
 			return 1;
 	}
 

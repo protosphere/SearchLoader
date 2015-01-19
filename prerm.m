@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
 		appIndexerJobOptions = [NSMutableDictionary dictionaryWithContentsOfFile:appIndexerPlist];
 
 		// Give up
-		if (appIndexerPlist == nil) 
+		if (appIndexerJobOptions == nil) 
 			return 1;
 	}
 
@@ -51,8 +51,6 @@ int main(int argc, char **argv) {
 		[appIndexerJobOptions setObject:environmentVariables forKey:@"EnvironmentVariables"];
 	else
 		[appIndexerJobOptions removeObjectForKey:@"EnvironmentVariables"];
-
-	[environmentVariables release];
 
 	if (![appIndexerJobOptions writeToFile:appIndexerPlist atomically:YES])
 		return 1;
