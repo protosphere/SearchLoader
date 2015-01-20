@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
 	NSMutableDictionary *appIndexerJobOptions = [NSMutableDictionary dictionaryWithContentsOfFile:appIndexerPlist];
 
 	// Try /Library/LaunchDaemons/
-	if (appIndexerPlist == nil) {
+	if (appIndexerJobOptions == nil) {
 		appIndexerPlist = @"/Library/LaunchDaemons/com.apple.search.appindexer.plist";
 		appIndexerJobOptions = [NSMutableDictionary dictionaryWithContentsOfFile:appIndexerPlist];
 
@@ -36,8 +36,6 @@ int main(int argc, char **argv) {
 		[environmentVariables setObject:TLSubstrateBootstrapPath forKey:@"DYLD_INSERT_LIBRARIES"];		
 	} else {
 		NSArray *insertedLibraries = [libraryList componentsSeparatedByString:@":"];
-		if (insertedLibraries == nil)
-			return 1;
 
 		NSUInteger index = [insertedLibraries indexOfObject:TLSubstrateBootstrapPath];
 		if (index != NSNotFound)
